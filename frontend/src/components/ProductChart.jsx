@@ -4,11 +4,13 @@ import Chart from 'chart.js/auto';/*must include it */
 
 
 const ProductChart = ({ products, onProductClick }) => {
+  const productsArray = Object.values(products);
+ 
   const chartData = {
-    labels: products.map(product => product.name),
+    labels: productsArray.map(product => product.name),
     datasets: [{
       label: 'Product Details',
-      data: products.map(product => product.price),
+      data: productsArray.map(product => product.price),
       backgroundColor: 'rgba(75,192,192,0.2)',
       borderColor: 'rgba(75,192,192,1)',
       borderWidth: 1,
@@ -27,7 +29,7 @@ const ProductChart = ({ products, onProductClick }) => {
     },
     onClick: (event, elements) => {
       if (elements.length > 0) {
-        const clickedProduct = products[elements[0].index];
+        const clickedProduct = productsArray[elements[0].index];
         onProductClick(clickedProduct);
       }
     },
@@ -36,7 +38,7 @@ const ProductChart = ({ products, onProductClick }) => {
   return (
     <div className="chart-section">
       <h2>Products Chart</h2>
-      {products.length > 0 ? (
+      {productsArray.length > 0 ? (
         <Bar data={chartData} options={chartOptions} />
       ) : (
         <p>No products available by this User</p>

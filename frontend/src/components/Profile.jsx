@@ -18,16 +18,16 @@ const Profile = () => {
 
       const data = await response.json();
       setUserDetails(data);
-      console.log(data);
+      //console.log(data);
     } catch (error) {
       console.error('Error fetching user details', error);
     }
   };
 
-  const fetchProducts = async () => {
+  const fetchProducts = async (uid) => {
     try {
-      if (!userDetails._id) {
-        console.log('User ID not available yet');
+      if (!uid) {
+        //console.log('User ID not available yet');
         return;
       }
 
@@ -39,7 +39,7 @@ const Profile = () => {
       });
 
       const products = await list.json();
-      const filteredProducts = products.filter(product => product.userId === userDetails._id);
+      const filteredProducts = products.filter(product => product.userId === uid);
 
       if (filteredProducts.length > 0) {
         setProducts(filteredProducts);
@@ -55,7 +55,7 @@ const Profile = () => {
   };
 
   const handleProductClick = (clickedProduct) => {
-    console.log('Clicked Product:', clickedProduct);
+   // console.log('Clicked Product:', clickedProduct);
     setselectedProduct(clickedProduct);
     // You can navigate to a detailed view or display more information here
   };

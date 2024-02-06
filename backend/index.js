@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const Jwt = require("jsonwebtoken");
-
+require('dotenv').config();
+mongodburl= process.env.mongodburl;
 require("./Db/config");
 const User = require("./Db/User");
 const Product = require("./Db/Product");
@@ -9,8 +10,9 @@ const Product = require("./Db/Product");
 const app = express();
 app.use(express.json());
 app.use(cors());
+const PORT = process.env.PORT || 4000;
 
-const jwtkey = "e-comm";
+const jwtkey = process.env.JWT_SECRET || "e-comm";
 
 app.post("/signup", async (req, res) => {
   let user = new User(req.body);
@@ -130,4 +132,4 @@ function verifytoken(req, res, next) {
   }
 }
 
-app.listen(4000);
+app.listen(PORT);

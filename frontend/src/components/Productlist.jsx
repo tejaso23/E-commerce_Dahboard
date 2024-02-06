@@ -64,7 +64,7 @@ const Productlist = () => {
 
 
       const handleProductClick = (clickedProduct) => {
-        console.log('Clicked Product:', clickedProduct);
+       // console.log('Clicked Product:', clickedProduct);
         setselectedProduct(clickedProduct);
         // You can navigate to a detailed view or display more information here
       };

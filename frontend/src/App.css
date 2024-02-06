@@ -207,11 +207,11 @@ login
   margin-top: 3%;
   margin-left: 5%;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-  background-color: #c9c8c8;
-  margin-bottom: 10px;
+  background-color: rgba(226, 226, 226, 0.896);
+  margin-bottom: 20px;
 }
 
 

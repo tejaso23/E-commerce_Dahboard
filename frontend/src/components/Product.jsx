@@ -27,9 +27,9 @@ const Product = () => {
        }
     });
     result = result.json();
-    console.log(result);
+    /*console.log(result);*/
    
-    alert("Product Added");
+    alert("Product Added",result);
 
    }
 
