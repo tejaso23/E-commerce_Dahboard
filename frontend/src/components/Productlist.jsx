@@ -1,14 +1,14 @@
 import React,{useState,useEffect} from 'react';
 import {Link} from "react-router-dom" ;
 import ProductChart from './ProductChart';
-
+import API_URL from '../config';
 const Productlist = () => {
 
     const [products,setproducts] = useState([]);
     const [selectedProduct, setselectedProduct] = useState(null);
     const productlist = async ()=>{
       
-        let list = await fetch("http://localhost:4000/products",{
+        let list = await fetch(`${API_URL}/products`,{
            method:"get",
           
            headers:{
@@ -27,7 +27,7 @@ const Productlist = () => {
      
       const deleteproduct=async (id)=>{
        console.log(id);
-       let result = await fetch(`http://localhost:4000/product/${id}`,{
+       let result = await fetch(`${API_URL}/product/${id}`,{
         method:"DELETE",
         headers:{
           "authorization": `bearer ${JSON.parse(localStorage.getItem('token'))}`
@@ -46,7 +46,7 @@ const Productlist = () => {
              const key =   event.target.value;
 
              if(key){
-               let result = await fetch(`http://localhost:4000/search/${key}`,{
+               let result = await fetch(`${API_URL}/search/${key}`,{
                 headers:{
                   "authorization": `bearer ${JSON.parse(localStorage.getItem('token'))}`
                }

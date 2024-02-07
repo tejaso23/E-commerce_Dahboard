@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState ,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import API_URL from '../config';
 
 
 const Login = () => {
@@ -11,7 +11,7 @@ const Login = () => {
 
     const logindata= async ()=>{
         console.warn(email,password);
-        let result = await fetch("http://localhost:4000/login",{
+        let result = await fetch(`${API_URL}/login`,{
             method:"post",
             body:JSON.stringify({email,password}),
             headers:{

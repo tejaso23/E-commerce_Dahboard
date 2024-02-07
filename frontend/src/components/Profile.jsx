@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductChart from './ProductChart';
-
+import API_URL from '../config';
 const Profile = () => {
   const [userDetails, setUserDetails] = useState({});
   const auth = JSON.parse(localStorage.getItem('user'));
@@ -9,7 +9,7 @@ const Profile = () => {
 
   const getUserDetails = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4000/profile/${id}`, {
+      const response = await fetch(`${API_URL}/profile/${id}`, {
         method: 'get',
         headers: {
           'authorization': `bearer ${JSON.parse(localStorage.getItem('token'))}`
@@ -31,7 +31,7 @@ const Profile = () => {
         return;
       }
 
-      const list = await fetch("http://localhost:4000/products", {
+      const list = await fetch(`${API_URL}/products`, {
         method: "get",
         headers: {
           "authorization": `bearer ${JSON.parse(localStorage.getItem('token'))}`

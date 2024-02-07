@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-
+import API_URL from '../config';
 
 const Signup =()=>{
    const [name,setname] = useState("");
@@ -15,7 +15,7 @@ const Signup =()=>{
 
    const signupdata= async ()=>{
     console.warn(name,email,password);
-    let result = await fetch("http://localhost:4000/signup",{
+    let result = await fetch(`${API_URL}/signup`,{
         method:"post",
         body:JSON.stringify({name,email,password}),
         headers:{
