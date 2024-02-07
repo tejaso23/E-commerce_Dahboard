@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const Jwt = require("jsonwebtoken");
 require('dotenv').config();
-mongodburl= process.env.mongodburl;
+mongodburl= "mongodb+srv://ntejas023:Nh33nJICro4hwCNC@cluster0.sabedyk.mongodb.net/e-comm";
 require("./Db/config");
 const User = require("./Db/User");
 const Product = require("./Db/Product");
