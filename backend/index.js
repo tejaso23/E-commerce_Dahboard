@@ -2,14 +2,26 @@ const express = require("express");
 const cors = require("cors");
 const Jwt = require("jsonwebtoken");
 require('dotenv').config();
+const path = require("path");
 mongodburl= "mongodb+srv://ntejas023:Nh33nJICro4hwCNC@cluster0.sabedyk.mongodb.net/e-comm";
 require("./Db/config");
 const User = require("./Db/User");
 const Product = require("./Db/Product");
 
 const app = express();
+
+
 app.use(express.json());
-app.use(cors());
+const _dirname = path.dirname("");
+const buildpath = path.join(_dirname,"../frontend/build");
+app.use(express.static(buildpath));
+app.use(cors({
+  origin:"*"
+  }
+));
+
+
+
 const PORT = process.env.PORT || 4000;
 
 const jwtkey = process.env.JWT_SECRET || "e-comm";

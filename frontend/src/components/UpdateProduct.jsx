@@ -17,7 +17,7 @@ const UpdateProduct = () => {
     useEffect(()=>{
      
       getProductDetails();
-    },);
+    },[params.id]);
 
 
     const getProductDetails= async ()=>{
@@ -27,12 +27,12 @@ const UpdateProduct = () => {
        }
       });
     result = await result.json();
-    console.log(result);
+   
     setname(result.name);
     setprice(result.price);
     setcategory(result.category);
     setcompany(result.company);
-    
+     console.log(result);
         
 }
 
