@@ -7,8 +7,12 @@ mongodburl= "mongodb+srv://ntejas023:Nh33nJICro4hwCNC@cluster0.sabedyk.mongodb.n
 require("./Db/config");
 const User = require("./Db/User");
 const Product = require("./Db/Product");
-
+const helmet = require("helmet");
 const app = express();
+
+
+
+
 
 
 app.use(express.json());
@@ -20,9 +24,20 @@ app.use(cors({
   }
 ));
 
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        "default-src": ["'self'"],
+        "font-src": ["'self'", "https://fonts.gstatic.com"],
+        "style-src-elem": ["'self'", "https://fonts.googleapis.com"],
+      },
+    },
+  })
+);
 
-
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8000;
 
 const jwtkey = process.env.JWT_SECRET || "e-comm";
 
