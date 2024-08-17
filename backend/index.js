@@ -37,7 +37,7 @@ app.use(
   })
 );
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 9000;
 
 const jwtkey = process.env.JWT_SECRET || "e-comm";
 
